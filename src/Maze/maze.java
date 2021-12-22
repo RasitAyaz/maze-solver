@@ -6,13 +6,13 @@ import java.util.Scanner;
 
 public class maze {
 
-    public static void getMaze() {
+    public static void getMaze(String filename) {
         try {
-            File myObj = new File("maze.txt");
+            File myObj = new File(filename);
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
               String data = myReader.nextLine();
-              System.out.println(data);
+              System.out.print(data + "\n");
             }
             myReader.close();
           } catch (FileNotFoundException e) {

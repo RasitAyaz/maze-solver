@@ -6,4 +6,6 @@ public class box {
     wall right_wall;
     wall up_wall;
     wall down_wall;
+    int x;
+    int y;
 }
