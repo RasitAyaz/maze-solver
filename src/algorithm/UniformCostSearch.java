@@ -1,14 +1,32 @@
 package src.algorithm;
 
+import java.util.List;
+
 import src.Tile;
 
 public class UniformCostSearch extends Search{
 
-
+    
+    private Tile currentTile;
     @Override 
     public boolean search(){
         
+       currentTile = removeMinCostFrontier();
+
+       exploredTiles.add(currentTile);
+       expandedCoordinates.add(currentTile.getRealCoordinates());
+
+       if(maze.get(currentTile) == 'G'){
+
+            lastTile = currentTile;
+            findSolution();
+            return true;
+       }
+       List<Tile> exploreResult = getExpandableTiles(currentTile)
+
        
+
+       return false;
     }
     private Tile removeMinCostFrontier() {
         
