@@ -1,7 +1,5 @@
 package src;
 
-import src.maze.Maze;
-
 public class App {
     public static void main(String[] args){
         Maze maze = new Maze("maze.txt");
