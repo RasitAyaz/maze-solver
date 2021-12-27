@@ -29,4 +29,8 @@ public abstract class Search {
 
         Collections.reverse(solutionCoordinates);
     }
+
+    protected List<Tile> getExpandableTiles() {
+        return null;
+    }
 }
