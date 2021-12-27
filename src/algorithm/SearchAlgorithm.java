@@ -50,23 +50,25 @@ public abstract class SearchAlgorithm {
         int x = currentTile.getX();
         int y = currentTile.getY();
 
-        Tile left = new Tile(x, y + 1);
-        Tile up = new Tile(x + 1, y);
-        Tile right = new Tile(x, y - 1);
-        Tile down = new Tile(x - 1, y);
+        Tile left = new Tile(x - 1, y);
+        Tile up = new Tile(x, y - 1);
+        Tile right = new Tile(x + 1, y);
+        Tile down = new Tile(x, y + 1);
 
         if (canMoveTo(right)) {
-            tryToMove(expandableTiles, currentTile, x, y + 2);
-        }
-        if (canMoveTo(up)) {
-            tryToMove(expandableTiles, currentTile, x - 2, y);
-        }
-        if (canMoveTo(left)) {
-            tryToMove(expandableTiles, currentTile, x, y - 2);
-        }
-        if (canMoveTo(down)) {
             tryToMove(expandableTiles, currentTile, x + 2, y);
         }
+        if (canMoveTo(down)) {
+            tryToMove(expandableTiles, currentTile, x, y + 2);
+        }
+        if (canMoveTo(left)) {
+            tryToMove(expandableTiles, currentTile, x - 2, y);
+        }
+        if (canMoveTo(up)) {
+            tryToMove(expandableTiles, currentTile, x, y - 2);
+        }
+        
+        
 
         return expandableTiles;
     }
