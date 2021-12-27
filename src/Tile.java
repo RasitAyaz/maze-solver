@@ -46,6 +46,9 @@ public class Tile {
     public double getCost() {
         return cost;
     }
+    public double getHeuristic() {
+        return heuristic;
+    }
 
     @Override
     public boolean equals(Object obj) {
