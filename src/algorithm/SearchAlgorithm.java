@@ -50,32 +50,30 @@ public abstract class SearchAlgorithm {
         int x = currentTile.getX();
         int y = currentTile.getY();
 
-        Tile left = new Tile(x - 1, y);
-        Tile up = new Tile(x, y - 1);
-        Tile right = new Tile(x + 1, y);
-        Tile down = new Tile(x, y + 1);
+        Tile left = new Tile(x, y - 1);
+        Tile up = new Tile(x - 1, y);
+        Tile right = new Tile(x, y + 1);
+        Tile down = new Tile(x + 1, y);
 
         if (canMoveTo(right)) {
-            tryToMove(expandableTiles, currentTile, x + 2, y);
-        }
-        if (canMoveTo(down)) {
             tryToMove(expandableTiles, currentTile, x, y + 2);
         }
-        if (canMoveTo(left)) {
-            tryToMove(expandableTiles, currentTile, x - 2, y);
+        if (canMoveTo(down)) {
+            tryToMove(expandableTiles, currentTile, x + 2, y);
         }
-        if (canMoveTo(up)) {
+        if (canMoveTo(left)) {
             tryToMove(expandableTiles, currentTile, x, y - 2);
         }
-        
-        
+        if (canMoveTo(up)) {
+            tryToMove(expandableTiles, currentTile, x - 2, y);
+        }
 
         return expandableTiles;
     }
 
-    private void tryToMove(List<Tile> tiles, Tile currentTile, int x, int y) {
+    private void tryToMove(List<Tile> tiles, Tile parentTile, int x, int y) {
         try {
-            Tile tile = new Tile(x, y + 2, currentTile.getCost() + getCost(x, y + 2), getManhattanDistance(x, y + 2));
+            Tile tile = new Tile(x, y, parentTile.getCost() + getCost(x, y), getManhattanDistance(x, y), parentTile);
             tiles.add(tile);
         } catch (ArrayIndexOutOfBoundsException e) {
             return;
@@ -109,7 +107,6 @@ public abstract class SearchAlgorithm {
     }
 
     public void printSolutions() {
-        System.out.println(solutionCoordinates.isEmpty());
         List<String> solutionPath = new ArrayList<>();
         for (Coordinate coordinate : solutionCoordinates) {
             solutionPath.add(coordinate.toString());

@@ -7,7 +7,7 @@ import src.algorithm.BreadthFirstSearch;
 import src.algorithm.SearchAlgorithm;
 
 public class App {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         System.out.print("Enter an input file for maze: ");
         Scanner scanner = new Scanner(System.in);
         String mazeFileName = "maze.txt";// scanner.nextLine();
@@ -15,8 +15,11 @@ public class App {
         Maze maze = new Maze(mazeFileName);
 
         System.out.println();
-        
+
         for (int i = 0; i < maze.getSize(); i++) {
+            if (i < 10)
+                System.out.print(" ");
+            System.out.print(i + "  ");
             for (int j = 0; j < maze.getSize(); j++) {
                 System.out.print(maze.get(i, j) + " ");
             }
@@ -27,5 +30,5 @@ public class App {
         search.search();
         search.printSolutions();
     }
-    
+
 }
