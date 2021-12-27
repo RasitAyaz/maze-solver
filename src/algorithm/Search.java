@@ -30,7 +30,7 @@ public abstract class Search {
         Collections.reverse(solutionCoordinates);
     }
 
-    protected List<Tile> getExpandableTiles() {
+    protected List<Tile> getExpandableTiles(Tile currentTile) {
         return null;
     }
 }
