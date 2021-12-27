@@ -45,4 +45,12 @@ public class Maze {
     public char[][] getMazeMatrix() {
         return mazeMatrix;
     }
+
+    public Tile getStartTile() {
+        return startTile;
+    }
+
+    public List<Tile> getGoalTiles() {
+        return goalTiles;
+    }
 }

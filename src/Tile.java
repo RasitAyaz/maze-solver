@@ -31,6 +31,14 @@ public class Tile {
         return new Coordinate((x + 1) / 2, (y + 1) / 2);
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
     public Tile getParent() {
         return parent;
     }
