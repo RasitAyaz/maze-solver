@@ -42,8 +42,8 @@ public class Maze {
         }
     }
 
-    public char[][] getMazeMatrix() {
-        return mazeMatrix;
+    public char get(int x, int y) {
+        return mazeMatrix[x][y];
     }
 
     public Tile getStartTile() {
