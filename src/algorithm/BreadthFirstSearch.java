@@ -14,7 +14,6 @@ public class BreadthFirstSearch extends SearchAlgorithm {
     public boolean search() {
         while (!frontier.isEmpty()) {
             Tile currentTile = frontier.remove(0);
-            System.out.println(currentTile.getRealCoordinates());
 
             exploredTiles.add(currentTile);
             expandedCoordinates.add(currentTile.getRealCoordinates());

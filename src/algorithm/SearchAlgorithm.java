@@ -3,6 +3,7 @@ package src.algorithm;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import src.Coordinate;
 import src.Maze;
@@ -107,10 +108,48 @@ public abstract class SearchAlgorithm {
     }
 
     public void printSolutions() {
-        List<String> solutionPath = new ArrayList<>();
-        for (Coordinate coordinate : solutionCoordinates) {
-            solutionPath.add(coordinate.toString());
+        System.out.println("\n");
+
+        System.out.print("      ");
+        for (int y = 1; y < maze.getSize() / 2 + 1; y++) {
+            if (y < 10)
+                System.out.print(" ");
+            System.out.print(y + "  ");
         }
-        System.out.println(String.join(" -> ", solutionPath));
+
+        System.out.println("\n   ");
+
+        for (int i = 0; i < maze.getSize(); i++) {
+            int x = (i + 1) / 2;
+            if (i % 2 == 1) {
+                if (x < 10)
+                    System.out.print(" ");
+                System.out.print(x + "   ");
+            } else {
+                System.out.print("     ");
+            }
+            for (int j = 0; j < maze.getSize(); j++) {
+                char ch = maze.get(i, j);
+                if (ch == ' ' && solutionCoordinates.contains(new Coordinate((i + 1) / 2, (j + 1) / 2)))
+                    System.out.print(". ");
+                else
+                    System.out.print(maze.get(i, j) + " ");
+            }
+            System.out.println();
+        }
+
+        System.out.println();
+
+        printCoordinateList("Expanded Coordinates", expandedCoordinates, ", ");
+        printCoordinateList("Solution Path", solutionCoordinates, " -> ");
+    }
+
+    private void printCoordinateList(String title, List<Coordinate> list, String delimiter) {
+        System.out.println(title + ":");
+        String listStr = list.stream()
+                .map(Coordinate::toString)
+                .collect(Collectors.joining(delimiter));
+
+        System.out.println(listStr + "\n");
     }
 }
