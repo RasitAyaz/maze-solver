@@ -8,15 +8,15 @@ import java.util.Scanner;
 
 public class Maze {
     private char[][] mazeMatrix;
-    private Box start;
-    private List<Box> goals;
+    private Tile startTile;
+    private List<Tile> goalTiles;
 
     public Maze(String fileName) {
         try {
             File myObj = new File(fileName);
             Scanner scanner = new Scanner(myObj);
             int i = 0;
-            goals = new ArrayList<>();
+            goalTiles = new ArrayList<>();
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 if (mazeMatrix == null) {
@@ -27,11 +27,11 @@ public class Maze {
                     mazeMatrix[i][j] = ch;
 
                     if (ch == 'S') {
-                        start = new Box(i, j, 0);
+                        startTile = new Tile(i, j, 0);
                     }
 
                     if (ch == 'G') {
-                        goals.add(new Box(i, j, 0));
+                        goalTiles.add(new Tile(i, j, 0));
                     }
                 }
                 i++;
