@@ -6,7 +6,7 @@ import src.Tile;
 
 public class BreadthFirstSearch extends Search {
     @Override
-    public void search() {
+    public boolean search() {
         while (!frontier.isEmpty()) {
             Tile currentTile = frontier.remove(0);
 
@@ -16,7 +16,7 @@ public class BreadthFirstSearch extends Search {
             if (maze.get(currentTile) == 'G') {
                 lastTile = currentTile;
                 findSolution();
-                break;
+                return true;
             }
 
             List<Tile> expandableTiles = getExpandableTiles(currentTile);
@@ -27,5 +27,6 @@ public class BreadthFirstSearch extends Search {
                 }
             }
         }
+        return false;
     }
 }

@@ -6,7 +6,7 @@ public class UniformCostSearch extends Search{
 
 
     @Override 
-    public void search(){
+    public boolean search(){
         
        
     }

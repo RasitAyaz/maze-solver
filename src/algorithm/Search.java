@@ -16,7 +16,7 @@ public abstract class Search {
     protected List<Tile> frontier;
     protected Tile lastTile;
 
-    public abstract void search();
+    public abstract boolean search();
 
     protected void findSolution() {
         Tile temp = lastTile;

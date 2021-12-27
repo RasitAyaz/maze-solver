@@ -8,7 +8,7 @@ import src.Tile;
 public class DepthFirstSearch extends Search {
 
     @Override
-    public void search() {
+    public boolean search() {
         while (!frontier.isEmpty()) {
             Tile currentTile = frontier.remove(frontier.size() - 1);
 
@@ -18,7 +18,7 @@ public class DepthFirstSearch extends Search {
             if (maze.get(currentTile) == 'G') {
                 lastTile = currentTile;
                 findSolution();
-                break;
+                return true;
             }
             List<Tile> expandableTiles = getExpandableTiles(currentTile);
             Collections.reverse(expandableTiles);
@@ -27,7 +27,7 @@ public class DepthFirstSearch extends Search {
                     frontier.add(tile);
                 }
             }
-
         }
+        return false;
     }
 }
