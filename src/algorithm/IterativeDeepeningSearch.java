@@ -2,9 +2,14 @@ package src.algorithm;
 
 import java.util.List;
 
+import src.Maze;
 import src.Tile;
 
 public class IterativeDeepeningSearch extends SearchAlgorithm {
+    public IterativeDeepeningSearch(Maze maze) {
+        super(maze);
+    }
+
     @Override
     public boolean search() {
         Tile firstTile = frontier.remove(frontier.size() - 1);

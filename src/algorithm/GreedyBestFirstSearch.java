@@ -2,9 +2,14 @@ package src.algorithm;
 
 import java.util.List;
 
+import src.Maze;
 import src.Tile;
 
 public class GreedyBestFirstSearch extends SearchAlgorithm {
+
+    public GreedyBestFirstSearch(Maze maze) {
+        super(maze);
+    }
 
     @Override
     public boolean search() {

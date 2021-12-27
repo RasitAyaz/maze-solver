@@ -2,13 +2,19 @@ package src.algorithm;
 
 import java.util.List;
 
+import src.Maze;
 import src.Tile;
 
 public class BreadthFirstSearch extends SearchAlgorithm {
+    public BreadthFirstSearch(Maze maze) {
+        super(maze);
+    }
+
     @Override
     public boolean search() {
         while (!frontier.isEmpty()) {
             Tile currentTile = frontier.remove(0);
+            System.out.println(currentTile.getRealCoordinates());
 
             exploredTiles.add(currentTile);
             expandedCoordinates.add(currentTile.getRealCoordinates());

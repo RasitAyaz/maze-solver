@@ -2,9 +2,14 @@ package src.algorithm;
 
 import java.util.List;
 
+import src.Maze;
 import src.Tile;
 
 public class AStarSearch extends SearchAlgorithm {
+
+    public AStarSearch(Maze maze) {
+        super(maze);
+    }
 
     private Tile currentTile;
 
@@ -22,9 +27,9 @@ public class AStarSearch extends SearchAlgorithm {
             findSolution();
             return true;
         }
-        List<Tile> exploreResult = getExpandableTiles(currentTile);
+        List<Tile> expandableTiles = getExpandableTiles(currentTile);
 
-        for (Tile tiles : exploreResult) {
+        for (Tile tiles : expandableTiles) {
             if (frontier.contains(tiles) && exploredTiles.contains(tiles)) {
                 frontier.add(tiles);
             }

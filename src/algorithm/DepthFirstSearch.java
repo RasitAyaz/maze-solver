@@ -3,9 +3,14 @@ package src.algorithm;
 import java.util.Collections;
 import java.util.List;
 
+import src.Maze;
 import src.Tile;
 
 public class DepthFirstSearch extends SearchAlgorithm {
+
+    public DepthFirstSearch(Maze maze) {
+        super(maze);
+    }
 
     @Override
     public boolean search() {

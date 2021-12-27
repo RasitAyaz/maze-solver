@@ -17,6 +17,18 @@ public abstract class SearchAlgorithm {
     protected List<Tile> frontier;
     protected Tile lastTile;
 
+    public SearchAlgorithm(Maze maze) {
+        this.maze = maze;
+        solutionCoordinates = new ArrayList<>();
+        exploredTiles = new ArrayList<>();
+        expandedCoordinates = new ArrayList<>();
+        frontier = new ArrayList<>();
+
+        Tile startTile = maze.getStartTile();
+        startTile.setHeuristic(getManhattanDistance(startTile));
+        frontier.add(startTile);
+    }
+
     public abstract boolean search();
 
     protected void findSolution() {
@@ -44,23 +56,28 @@ public abstract class SearchAlgorithm {
         Tile down = new Tile(x - 1, y);
 
         if (canMoveTo(right)) {
-            expandableTiles
-                    .add(new Tile(x, y + 2, currentTile.getCost() + getCost(x, y + 2), getManhattanDistance(x, y + 2)));
+            tryToMove(expandableTiles, currentTile, x, y + 2);
         }
         if (canMoveTo(up)) {
-            expandableTiles
-                    .add(new Tile(x - 2, y, currentTile.getCost() + getCost(x - 2, y), getManhattanDistance(x - 2, y)));
+            tryToMove(expandableTiles, currentTile, x - 2, y);
         }
         if (canMoveTo(left)) {
-            expandableTiles
-                    .add(new Tile(x, y - 2, currentTile.getCost() + getCost(x, y - 2), getManhattanDistance(x, y - 2)));
+            tryToMove(expandableTiles, currentTile, x, y - 2);
         }
         if (canMoveTo(down)) {
-            expandableTiles
-                    .add(new Tile(x + 2, y, currentTile.getCost() + getCost(x + 2, y), getManhattanDistance(x + 2, y)));
+            tryToMove(expandableTiles, currentTile, x + 2, y);
         }
 
         return expandableTiles;
+    }
+
+    private void tryToMove(List<Tile> tiles, Tile currentTile, int x, int y) {
+        try {
+            Tile tile = new Tile(x, y + 2, currentTile.getCost() + getCost(x, y + 2), getManhattanDistance(x, y + 2));
+            tiles.add(tile);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return;
+        }
     }
 
     private boolean canMoveTo(Tile currentTile) {
@@ -73,6 +90,10 @@ public abstract class SearchAlgorithm {
         return 1;
     }
 
+    private double getManhattanDistance(Tile tile) {
+        return getManhattanDistance(tile.getX(), tile.getY());
+    }
+
     private double getManhattanDistance(int x, int y) {
         int realX = (x + 1) / 2;
         int realY = (y + 1) / 2;
@@ -83,5 +104,14 @@ public abstract class SearchAlgorithm {
             heuristicResults.add((double) Math.abs(realX - tile.getX() + Math.abs(realY - tile.getY())));
         }
         return Collections.min(heuristicResults);
+    }
+
+    public void printSolutions() {
+        System.out.println(solutionCoordinates.isEmpty());
+        List<String> solutionPath = new ArrayList<>();
+        for (Coordinate coordinate : solutionCoordinates) {
+            solutionPath.add(coordinate.toString());
+        }
+        System.out.println(String.join(" -> ", solutionPath));
     }
 }

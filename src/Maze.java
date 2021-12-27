@@ -17,7 +17,7 @@ public class Maze {
             Scanner scanner = new Scanner(myObj);
             int i = 0;
             goalTiles = new ArrayList<>();
-            while (scanner.hasNextLine()) {
+            while (scanner.hasNext()) {
                 String line = scanner.nextLine();
                 if (mazeMatrix == null) {
                     mazeMatrix = new char[line.length()][line.length()];
@@ -38,7 +38,8 @@ public class Maze {
             }
             scanner.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Maze file " + fileName + " could not be found.");
+            System.out.println("Maze file \"" + fileName + "\" could not be found.");
+            System.exit(1);
         }
     }
 

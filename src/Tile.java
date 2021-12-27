@@ -55,6 +55,10 @@ public class Tile {
         return heuristic;
     }
 
+    public void setHeuristic(double heuristic) {
+        this.heuristic = heuristic;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Tile) {

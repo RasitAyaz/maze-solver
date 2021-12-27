@@ -2,9 +2,14 @@ package src.algorithm;
 
 import java.util.List;
 
+import src.Maze;
 import src.Tile;
 
 public class UniformCostSearch extends SearchAlgorithm {
+
+    public UniformCostSearch(Maze maze) {
+        super(maze);
+    }
 
     private Tile currentTile;
 
