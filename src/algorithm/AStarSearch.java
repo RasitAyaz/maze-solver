@@ -4,8 +4,7 @@ import java.util.List;
 
 import src.Tile;
 
-public class AStarSearch extends Search{
-    
+public class AStarSearch extends SearchAlgorithm {
 
     private Tile currentTile;
 

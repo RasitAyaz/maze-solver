@@ -4,7 +4,7 @@ import java.util.List;
 
 import src.Tile;
 
-public class IterativeDeepeningSearch extends Search {
+public class IterativeDeepeningSearch extends SearchAlgorithm {
     @Override
     public boolean search() {
         Tile firstTile = frontier.remove(frontier.size() - 1);
