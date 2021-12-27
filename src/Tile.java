@@ -7,20 +7,24 @@ public class Tile {
     private Tile parent;
     private double heuristic;
 
-    public Tile(int x, int y, double cost) {
+    public Tile(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    public Tile(int x, int y, double cost) {
+        this(x, y);
         this.cost = cost;
     }
 
-    public Tile(int x, int y, double cost, Tile parent) {
+    public Tile(int x, int y, double cost, double heuristic) {
         this(x, y, cost);
-        this.parent = parent;
+        this.heuristic = heuristic;
     }
 
-    public Tile(int x, int y, double cost, Tile parent, double heuristic) {
-        this(x, y, cost, parent);
-        this.heuristic = heuristic;
+    public Tile(int x, int y, double cost, double heuristic, Tile parent) {
+        this(x, y, cost, heuristic);
+        this.parent = parent;
     }
 
     public double getAStarHeuristic() {
@@ -46,6 +50,7 @@ public class Tile {
     public double getCost() {
         return cost;
     }
+
     public double getHeuristic() {
         return heuristic;
     }
