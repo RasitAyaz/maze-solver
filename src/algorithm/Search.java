@@ -1,8 +1,12 @@
-package src;
+package src.algorithm;
 
 import java.util.List;
 
-public abstract class SearchAlgorithm {
+import src.Coordinate;
+import src.Maze;
+import src.Tile;
+
+public abstract class Search {
     protected List<Coordinate> solutionCoordinates;
     protected List<Tile> exploredTiles;
     protected double solutionCost;
