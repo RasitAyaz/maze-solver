@@ -4,7 +4,7 @@ import java.util.List;
 
 import src.Tile;
 
-public class BreadthFirstSearch extends Search {
+public class BreadthFirstSearch extends SearchAlgorithm {
     @Override
     public boolean search() {
         while (!frontier.isEmpty()) {

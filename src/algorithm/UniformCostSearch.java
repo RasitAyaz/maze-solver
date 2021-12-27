@@ -4,7 +4,7 @@ import java.util.List;
 
 import src.Tile;
 
-public class UniformCostSearch extends Search {
+public class UniformCostSearch extends SearchAlgorithm {
 
     private Tile currentTile;
 

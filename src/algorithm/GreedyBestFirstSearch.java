@@ -4,7 +4,7 @@ import java.util.List;
 
 import src.Tile;
 
-public class GreedyBestFirstSearch extends Search {
+public class GreedyBestFirstSearch extends SearchAlgorithm {
 
     @Override
     public boolean search() {

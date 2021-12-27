@@ -5,7 +5,7 @@ import java.util.List;
 
 import src.Tile;
 
-public class DepthFirstSearch extends Search {
+public class DepthFirstSearch extends SearchAlgorithm {
 
     @Override
     public boolean search() {
