@@ -1,5 +1,6 @@
 package src.algorithm;
 
+import java.util.Collections;
 import java.util.List;
 
 import src.Coordinate;
@@ -13,6 +14,19 @@ public abstract class Search {
     protected double solutionCost;
     protected Maze maze;
     protected List<Tile> frontier;
+    protected Tile lastTile;
 
     public abstract void search();
+
+    protected void findSolution() {
+        Tile temp = lastTile;
+        solutionCost = lastTile.getCost();
+
+        while (temp != null) {
+            solutionCoordinates.add(temp.getRealCoordinates());
+            temp = temp.getParent();
+        }
+
+        Collections.reverse(solutionCoordinates);
+    }
 }

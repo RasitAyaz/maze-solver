@@ -43,6 +43,10 @@ public class Tile {
         return parent;
     }
 
+    public double getCost() {
+        return cost;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Tile) {

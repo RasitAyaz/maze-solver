@@ -42,6 +42,10 @@ public class Maze {
         }
     }
 
+    public char get(Tile tile) {
+        return mazeMatrix[tile.getX()][tile.getY()];
+    }
+
     public char get(int x, int y) {
         return mazeMatrix[x][y];
     }
