@@ -46,6 +46,10 @@ public class Maze {
         return mazeMatrix[x][y];
     }
 
+    public int getSize() {
+        return mazeMatrix.length;
+    }
+
     public Tile getStartTile() {
         return startTile;
     }
