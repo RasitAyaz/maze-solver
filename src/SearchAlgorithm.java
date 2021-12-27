@@ -3,11 +3,11 @@ package src;
 import java.util.List;
 
 public abstract class SearchAlgorithm {
-    private List<Coordinate> solutionCoordinates;
-    private List<Tile> exploredTiles;
-    private double solutionCost;
-    private Maze maze;
-    private List<Tile> frontier;
+    protected List<Coordinate> solutionCoordinates;
+    protected List<Tile> exploredTiles;
+    protected double solutionCost;
+    protected Maze maze;
+    protected List<Tile> frontier;
 
     public abstract void search();
 }
