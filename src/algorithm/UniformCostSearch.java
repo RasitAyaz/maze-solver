@@ -4,36 +4,41 @@ import java.util.List;
 
 import src.Tile;
 
-public class UniformCostSearch extends Search{
+public class UniformCostSearch extends Search {
 
-    
     private Tile currentTile;
-    @Override 
-    public boolean search(){
-        
-       currentTile = removeMinCostFrontier();
 
-       exploredTiles.add(currentTile);
-       expandedCoordinates.add(currentTile.getRealCoordinates());
+    @Override
+    public boolean search() {
 
-       if(maze.get(currentTile) == 'G'){
+        currentTile = removeMinCostFrontier();
+
+        exploredTiles.add(currentTile);
+        expandedCoordinates.add(currentTile.getRealCoordinates());
+
+        if (maze.get(currentTile) == 'G') {
 
             lastTile = currentTile;
             findSolution();
             return true;
-       }
-       List<Tile> exploreResult = getExpandableTiles(currentTile)
+        }
+        List<Tile> exploreResult = getExpandableTiles(currentTile);
 
-       
+        for (Tile tiles : exploreResult) {
+            if (frontier.contains(tiles) && exploredTiles.contains(tiles)) {
+                frontier.add(tiles);
+            }
+        }
 
-       return false;
+        return false;
     }
+
     private Tile removeMinCostFrontier() {
-        
+
         int indexOfMinElement = 0;
         double minCost = Double.MAX_VALUE;
 
-        for(int i=0;i < frontier.size();i++) {
+        for (int i = 0; i < frontier.size(); i++) {
             if (frontier.get(i).getCost() < minCost) {
                 indexOfMinElement = i;
                 minCost = frontier.get(i).getCost();
@@ -41,6 +46,4 @@ public class UniformCostSearch extends Search{
         }
         return frontier.remove(indexOfMinElement);
     }
-
-    
 }
