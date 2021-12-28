@@ -51,10 +51,10 @@ public abstract class SearchAlgorithm {
         int x = currentTile.getX();
         int y = currentTile.getY();
 
-        Tile left = new Tile(x, y - 1);
-        Tile up = new Tile(x - 1, y);
         Tile right = new Tile(x, y + 1);
         Tile down = new Tile(x + 1, y);
+        Tile left = new Tile(x, y - 1);
+        Tile up = new Tile(x - 1, y);
 
         if (canMoveTo(right)) {
             tryToMove(expandableTiles, currentTile, x, y + 2);
@@ -81,8 +81,8 @@ public abstract class SearchAlgorithm {
         }
     }
 
-    private boolean canMoveTo(Tile currentTile) {
-        return maze.get(currentTile) != '#';
+    private boolean canMoveTo(Tile tile) {
+        return maze.get(tile) != '#';
     }
 
     private int getCost(int x, int y) {
@@ -96,13 +96,14 @@ public abstract class SearchAlgorithm {
     }
 
     private double getManhattanDistance(int x, int y) {
-        int realX = (x + 1) / 2;
-        int realY = (y + 1) / 2;
+        x = (x + 1) / 2;
+        y = (y + 1) / 2;
 
         List<Double> heuristicResults = new ArrayList<>();
 
         for (Tile tile : maze.getGoalTiles()) {
-            heuristicResults.add((double) Math.abs(realX - tile.getX() + Math.abs(realY - tile.getY())));
+            Coordinate realCoordinates = tile.getRealCoordinates();
+            heuristicResults.add((double) Math.abs(x - realCoordinates.getX()) + Math.abs(y - realCoordinates.getY()));
         }
         return Collections.min(heuristicResults);
     }
@@ -142,6 +143,7 @@ public abstract class SearchAlgorithm {
 
         printCoordinateList("Expanded Coordinates", expandedCoordinates, ", ");
         printCoordinateList("Solution Path", solutionCoordinates, " -> ");
+        System.out.println("Solution Cost: " + solutionCost);
     }
 
     private void printCoordinateList(String title, List<Coordinate> list, String delimiter) {

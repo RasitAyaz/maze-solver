@@ -15,23 +15,24 @@ public class AStarSearch extends SearchAlgorithm {
 
     @Override
     public boolean search() {
+        while (!frontier.isEmpty()) {
+            currentTile = removeMinCostFrontier();
 
-        currentTile = removeMinCostFrontier();
+            exploredTiles.add(currentTile);
+            expandedCoordinates.add(currentTile.getRealCoordinates());
 
-        exploredTiles.add(currentTile);
-        expandedCoordinates.add(currentTile.getRealCoordinates());
+            if (maze.get(currentTile) == 'G') {
 
-        if (maze.get(currentTile) == 'G') {
+                lastTile = currentTile;
+                findSolution();
+                return true;
+            }
+            List<Tile> expandableTiles = getExpandableTiles(currentTile);
 
-            lastTile = currentTile;
-            findSolution();
-            return true;
-        }
-        List<Tile> expandableTiles = getExpandableTiles(currentTile);
-
-        for (Tile tiles : expandableTiles) {
-            if (frontier.contains(tiles) && exploredTiles.contains(tiles)) {
-                frontier.add(tiles);
+            for (Tile tiles : expandableTiles) {
+                if (!frontier.contains(tiles) && !exploredTiles.contains(tiles)) {
+                    frontier.add(tiles);
+                }
             }
         }
 

@@ -13,7 +13,6 @@ public class GreedyBestFirstSearch extends SearchAlgorithm {
 
     @Override
     public boolean search() {
-
         while (!frontier.isEmpty()) {
             Tile currentTile = removeMinHeuristicFrontier();
 
@@ -33,21 +32,20 @@ public class GreedyBestFirstSearch extends SearchAlgorithm {
                     frontier.add(tile);
                 }
             }
-
         }
-        return false;
 
+        return false;
     }
 
     private Tile removeMinHeuristicFrontier() {
 
         int indexOfMinElement = 0;
-        double minCost = Double.MAX_VALUE;
+        double minHeuristic = Double.MAX_VALUE;
 
         for (int i = 0; i < frontier.size(); i++) {
-            if (frontier.get(i).getHeuristic() < minCost) {
+            if (frontier.get(i).getHeuristic() < minHeuristic) {
                 indexOfMinElement = i;
-                minCost = frontier.get(i).getHeuristic();
+                minHeuristic = frontier.get(i).getHeuristic();
             }
         }
         return frontier.remove(indexOfMinElement);

@@ -14,15 +14,15 @@ public class App {
     public static void main(String[] args) {
         System.out.print("Enter an input file for maze: ");
         Scanner scanner = new Scanner(System.in);
-        String mazeFileName = scanner.nextLine();
+        String mazeFileName = "maze.txt";//scanner.nextLine();
         Maze maze = new Maze(mazeFileName);
 
         System.out.println();
 
         boolean run = true;
         while (run) {
-            System.out.println("\n1.Depth First Search\n2.Breadth First Search\n3.Iterative Deepening Search\n" +
-                    "4.Uniform Cost Search\n5.Greedy Best First Search\n6.A* Heuristic Search\n7.Exit\nYour Selection:");
+            System.out.print("\n1. Depth First Search\n2. Breadth First Search\n3. Iterative Deepening Search\n" +
+                    "4. Uniform Cost Search\n5. Greedy Best First Search\n6. A* Heuristic Search\n7. Exit\n\nYour Selection: ");
             Integer selection = scanner.nextInt();
             switch (selection) {
                 case 1:
