@@ -41,7 +41,9 @@ public class IterativeDeepeningSearch extends SearchAlgorithm {
                     continue;
                 }
                 Tile resultTile = applyDepthLimitedSearch(childTile, limit - 1);
-                return resultTile;
+                if (resultTile != null) {
+                    return resultTile;
+                }
             }
             return null;
         }

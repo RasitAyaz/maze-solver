@@ -109,7 +109,11 @@ public abstract class SearchAlgorithm {
     }
 
     public void printSolutions() {
-        System.out.println("\n");
+        System.out.println();
+        printCoordinateList("Expanded Coordinates", expandedCoordinates, ", ");
+        printCoordinateList("Solution Path", solutionCoordinates, " -> ");
+        System.out.println("Solution Cost: " + solutionCost);
+        System.out.println("\nVisualized Solution:\n");
 
         System.out.print("      ");
         for (int y = 1; y < maze.getSize() / 2 + 1; y++) {
@@ -131,19 +135,30 @@ public abstract class SearchAlgorithm {
             }
             for (int j = 0; j < maze.getSize(); j++) {
                 char ch = maze.get(i, j);
-                if (ch == ' ' && solutionCoordinates.contains(new Coordinate((i + 1) / 2, (j + 1) / 2)))
+                if (ch == ' ' && isOnPath(i, j))
                     System.out.print(". ");
                 else
                     System.out.print(maze.get(i, j) + " ");
             }
             System.out.println();
         }
+    }
 
-        System.out.println();
+    private boolean isOnPath(int i, int j) {
+        int x = (i + 1) / 2;
+        int y = (j + 1) / 2;
 
-        printCoordinateList("Expanded Coordinates", expandedCoordinates, ", ");
-        printCoordinateList("Solution Path", solutionCoordinates, " -> ");
-        System.out.println("Solution Cost: " + solutionCost);
+        if (i % 2 == 1 && j % 2 == 1) {
+            return solutionCoordinates.contains(new Coordinate(x, y));
+        } else if (i % 2 == 1 && j % 2 == 0) {
+            return solutionCoordinates.contains(new Coordinate(x, y))
+                    && solutionCoordinates.contains(new Coordinate(x, y + 1));
+        } else if (i % 2 == 0 && j % 2 == 1) {
+            return solutionCoordinates.contains(new Coordinate(x, y))
+                    && solutionCoordinates.contains(new Coordinate(x + 1, y));
+        }
+
+        return false;
     }
 
     private void printCoordinateList(String title, List<Coordinate> list, String delimiter) {

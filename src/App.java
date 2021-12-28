@@ -12,45 +12,58 @@ import src.algorithm.SearchAlgorithm;
 
 public class App {
     public static void main(String[] args) {
-        System.out.print("Enter an input file for maze: ");
         Scanner scanner = new Scanner(System.in);
-        String mazeFileName = "maze.txt";//scanner.nextLine();
-        Maze maze = new Maze(mazeFileName);
-
-        System.out.println();
+        Maze maze = readMaze(scanner);
 
         boolean run = true;
         while (run) {
-            System.out.print("\n1. Depth First Search\n2. Breadth First Search\n3. Iterative Deepening Search\n" +
-                    "4. Uniform Cost Search\n5. Greedy Best First Search\n6. A* Heuristic Search\n7. Exit\n\nYour Selection: ");
-            Integer selection = scanner.nextInt();
+            System.out.print("\n1. Depth First Search\n" +
+                    "2. Breadth First Search\n" +
+                    "3. Iterative Deepening Search\n" +
+                    "4. Uniform Cost Search\n" +
+                    "5. Greedy Best First Search\n" +
+                    "6. A* Heuristic Search\n" +
+                    "7. Change Maze\n" +
+                    "8. Exit\n\n" +
+                    "Your selection: ");
+            String selection = scanner.nextLine();
             switch (selection) {
-                case 1:
+                case "1":
                     applyDFS(maze);
                     break;
-                case 2:
+                case "2":
                     applyBFS(maze);
                     break;
-                case 3:
+                case "3":
                     applyIterativeDeepening(maze);
                     break;
-                case 4:
+                case "4":
                     applyUniformCostSearch(maze);
                     break;
-                case 5:
+                case "5":
                     applyGreedy(maze);
                     break;
-                case 6:
+                case "6":
                     applyAStar(maze);
                     break;
-                case 7:
+                case "7":
+                    maze = readMaze(scanner);
+                    break;
+                case "8":
                     run = false;
                     break;
                 default:
+                    System.out.println("Please enter a valid number.");
                     break;
             }
         }
         scanner.close();
+    }
+
+    private static Maze readMaze(Scanner scanner) {
+        System.out.print("Enter an input file for maze: ");
+        String mazeFileName = scanner.nextLine();
+        return new Maze(mazeFileName);
     }
 
     private static void applyDFS(Maze maze) {
