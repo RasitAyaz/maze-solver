@@ -14,8 +14,8 @@ public abstract class SearchAlgorithm {
     protected List<Tile> exploredTiles;
     protected List<Coordinate> expandedCoordinates;
     protected double solutionCost;
-    protected int maxSizeFrontier;
-    protected int maxSizeExploredSet;
+    protected int maxFrontierSize;
+    protected int maxExploredSetSize;
     protected Maze maze;
     protected List<Tile> frontier;
     protected Tile lastTile;
@@ -112,10 +112,10 @@ public abstract class SearchAlgorithm {
 
     public void printSolutions() {
         System.out.println("\n\t  RESULT\n\t----------");
-        System.out.println("\nThe cost of the solution: " + (int)solutionCost);
+        System.out.println("\nThe cost of the solution: " + (int) solutionCost);
         System.out.println("\nThe number expanded nodes: " + expandedCoordinates.size());
-        System.out.println("\nThe maximum size of the frontier: " + maxSizeFrontier);
-        System.out.println("\nThe maximum size of the explored set: " + maxSizeExploredSet);
+        System.out.println("\nThe maximum size of the frontier: " + maxFrontierSize);
+        System.out.println("\nThe maximum size of the explored set: " + maxExploredSetSize);
         printCoordinateList("\nSolution Path", solutionCoordinates, " - ");
         System.out.println("\nVisualized Solution:\n");
 

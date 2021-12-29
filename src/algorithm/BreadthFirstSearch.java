@@ -17,8 +17,8 @@ public class BreadthFirstSearch extends SearchAlgorithm {
 
             exploredTiles.add(currentTile);
             expandedCoordinates.add(currentTile.getRealCoordinates());
-            if(exploredTiles.size()>maxSizeExploredSet){
-                maxSizeExploredSet=frontier.size();
+            if (exploredTiles.size() > maxExploredSetSize) {
+                maxExploredSetSize = frontier.size();
             }
 
             if (maze.get(currentTile) == 'G') {
@@ -32,8 +32,8 @@ public class BreadthFirstSearch extends SearchAlgorithm {
             for (Tile tile : expandableTiles) {
                 if (!frontier.contains(tile) && !exploredTiles.contains(tile)) {
                     frontier.add(tile);
-                    if(frontier.size()>maxSizeFrontier){
-                        maxSizeFrontier=frontier.size();
+                    if (frontier.size() > maxFrontierSize) {
+                        maxFrontierSize = frontier.size();
                     }
                 }
             }
