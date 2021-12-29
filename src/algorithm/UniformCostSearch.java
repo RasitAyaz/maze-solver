@@ -20,9 +20,6 @@ public class UniformCostSearch extends SearchAlgorithm {
 
             exploredTiles.add(currentTile);
             expandedCoordinates.add(currentTile.getRealCoordinates());
-            if (exploredTiles.size() > maxExploredSetSize) {
-                maxExploredSetSize = frontier.size();
-            }
 
             if (maze.get(currentTile) == 'G') {
 
