@@ -61,7 +61,7 @@ public class App {
     }
 
     private static Maze readMaze(Scanner scanner) {
-        System.out.print("Enter an input file for maze: ");
+        System.out.print("\n\nEnter an input file for maze: ");
         String mazeFileName = scanner.nextLine();
         return new Maze(mazeFileName);
     }
