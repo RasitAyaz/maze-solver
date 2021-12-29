@@ -18,39 +18,39 @@ public class App {
 
         boolean run = true;
         while (run) {
-            System.out.print("\n1. Change Maze\n" +
-                    "2. Depth First Search\n" +
-                    "3. Breadth First Search\n" +
-                    "4. Iterative Deepening Search\n" +
-                    "5. Uniform Cost Search\n" +
-                    "6. Greedy Best First Search\n" +
-                    "7. A* Heuristic Search\n" +
-                    "8. Exit\n\n" +
+            System.out.print("\n0. Change Maze\n" +
+                    "1. Depth First Search\n" +
+                    "2. Breadth First Search\n" +
+                    "3. Iterative Deepening Search\n" +
+                    "4. Uniform Cost Search\n" +
+                    "5. Greedy Best First Search\n" +
+                    "6. A* Heuristic Search\n" +
+                    "7. Exit\n\n" +
                     "Your selection: ");
             String selection = scanner.nextLine();
             switch (selection) {
-                case "1":
+                case "0":
                     maze = readMaze(scanner);
                     break;
-                case "2":
+                case "1":
                     applyDFS(maze);
                     break;
-                case "3":
+                case "2":
                     applyBFS(maze);
                     break;
-                case "4":
+                case "3":
                     applyIterativeDeepening(maze);
                     break;
-                case "5":
+                case "4":
                     applyUniformCostSearch(maze);
                     break;
-                case "6":
+                case "5":
                     applyGreedy(maze);
                     break;
-                case "7":
+                case "6":
                     applyAStar(maze);
                     break;
-                case "8":
+                case "7":
                     run = false;
                     break;
                 default:
