@@ -20,8 +20,8 @@ public class AStarSearch extends SearchAlgorithm {
 
             exploredTiles.add(currentTile);
             expandedCoordinates.add(currentTile.getRealCoordinates());
-            if(exploredTiles.size()>maxSizeExploredSet){
-                maxSizeExploredSet=frontier.size();
+            if (exploredTiles.size() > maxSizeExploredSet) {
+                maxSizeExploredSet = frontier.size();
             }
 
             if (maze.get(currentTile) == 'G') {
@@ -35,8 +35,8 @@ public class AStarSearch extends SearchAlgorithm {
             for (Tile tiles : expandableTiles) {
                 if (!frontier.contains(tiles) && !exploredTiles.contains(tiles)) {
                     frontier.add(tiles);
-                    if(frontier.size()>maxSizeFrontier){
-                        maxSizeFrontier=frontier.size();
+                    if (frontier.size() > maxSizeFrontier) {
+                        maxSizeFrontier = frontier.size();
                     }
                 }
             }
