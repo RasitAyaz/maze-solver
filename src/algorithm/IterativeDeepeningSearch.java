@@ -16,12 +16,10 @@ public class IterativeDeepeningSearch extends SearchAlgorithm {
         int maxDepth = maze.getSize() * maze.getSize();
 
         for (int depth = 0; depth < maxDepth; depth++) {
-            Tile resultTile = applyDepthLimitedSearch(firstTile, depth);
-            if (resultTile != null) {
-                lastTile = resultTile;
-                findSolution();
-                return true;
-            }
+            int currentDepth = 0;
+            frontier.clear();
+            frontier.add(maze.getStartTile());
+            
         }
 
         return false;
