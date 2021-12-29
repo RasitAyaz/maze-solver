@@ -11,36 +11,31 @@ public class Maze {
     private Tile startTile;
     private List<Tile> goalTiles;
 
-    public Maze(String fileName) {
-        try {
-            File myObj = new File(fileName);
-            Scanner scanner = new Scanner(myObj);
-            int i = 0;
-            goalTiles = new ArrayList<>();
-            while (scanner.hasNext()) {
-                String line = scanner.nextLine();
-                if (mazeMatrix == null) {
-                    mazeMatrix = new char[line.length()][line.length()];
-                }
-                for (int j = 0; j < line.length(); j++) {
-                    char ch = line.charAt(j);
-                    mazeMatrix[i][j] = ch;
-
-                    if (ch == 'S') {
-                        startTile = new Tile(i, j, 0);
-                    }
-
-                    if (ch == 'G') {
-                        goalTiles.add(new Tile(i, j, 0));
-                    }
-                }
-                i++;
+    public Maze(String fileName) throws FileNotFoundException {
+        File myObj = new File(fileName);
+        Scanner scanner = new Scanner(myObj);
+        int i = 0;
+        goalTiles = new ArrayList<>();
+        while (scanner.hasNext()) {
+            String line = scanner.nextLine();
+            if (mazeMatrix == null) {
+                mazeMatrix = new char[line.length()][line.length()];
             }
-            scanner.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("Maze file \"" + fileName + "\" could not be found.");
-            System.exit(1);
+            for (int j = 0; j < line.length(); j++) {
+                char ch = line.charAt(j);
+                mazeMatrix[i][j] = ch;
+
+                if (ch == 'S') {
+                    startTile = new Tile(i, j, 0);
+                }
+
+                if (ch == 'G') {
+                    goalTiles.add(new Tile(i, j, 0));
+                }
+            }
+            i++;
         }
+        scanner.close();
     }
 
     public char get(Tile tile) {

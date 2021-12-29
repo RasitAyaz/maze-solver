@@ -111,12 +111,12 @@ public abstract class SearchAlgorithm {
     }
 
     public void printSolutions() {
-        System.out.println("\n\t  RESULT\n\t----------");
-        System.out.println("\nThe cost of the solution: " + (int) solutionCost);
-        System.out.println("\nThe number expanded nodes: " + expandedCoordinates.size());
-        System.out.println("\nThe maximum size of the frontier: " + maxFrontierSize);
-        System.out.println("\nThe maximum size of the explored set: " + maxExploredSetSize);
-        printCoordinateList("\nSolution Path", solutionCoordinates, " - ");
+        System.out.println("\nRESULT\n----------");
+        System.out.println("Cost of the solution: " + (int) solutionCost);
+        System.out.println("Number expanded nodes: " + expandedCoordinates.size());
+        System.out.println("Maximum size of the frontier: " + maxFrontierSize);
+        System.out.println("Maximum size of the explored set: " + maxExploredSetSize);
+        printCoordinateList("\nSolution Path", solutionCoordinates, " -> ");
         System.out.println("\nVisualized Solution:\n");
 
         System.out.print("      ");
@@ -171,6 +171,6 @@ public abstract class SearchAlgorithm {
                 .map(Coordinate::toString)
                 .collect(Collectors.joining(delimiter));
 
-        System.out.println(listStr + "\n");
+        System.out.println(listStr);
     }
 }
