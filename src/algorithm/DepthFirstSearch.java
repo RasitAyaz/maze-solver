@@ -30,6 +30,9 @@ public class DepthFirstSearch extends SearchAlgorithm {
             for (Tile tile : expandableTiles) {
                 if (!frontier.contains(tile) && !exploredTiles.contains(tile)) {
                     frontier.add(tile);
+                    if(frontier.size()>maxSizeFrontier){
+                        maxSizeFrontier=frontier.size();
+                    }
                 }
             }
         }

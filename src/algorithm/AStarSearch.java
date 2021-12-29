@@ -32,6 +32,9 @@ public class AStarSearch extends SearchAlgorithm {
             for (Tile tiles : expandableTiles) {
                 if (!frontier.contains(tiles) && !exploredTiles.contains(tiles)) {
                     frontier.add(tiles);
+                    if(frontier.size()>maxSizeFrontier){
+                        maxSizeFrontier=frontier.size();
+                    }
                 }
             }
         }
