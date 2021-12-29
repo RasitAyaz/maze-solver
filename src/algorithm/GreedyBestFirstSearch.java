@@ -18,6 +18,9 @@ public class GreedyBestFirstSearch extends SearchAlgorithm {
 
             exploredTiles.add(currentTile);
             expandedCoordinates.add(currentTile.getRealCoordinates());
+            if(exploredTiles.size()>maxSizeExploredSet){
+                maxSizeExploredSet=frontier.size();
+            }
 
             if (maze.get(currentTile) == 'G') {
                 lastTile = currentTile;
