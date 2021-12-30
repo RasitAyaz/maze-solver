@@ -2,6 +2,7 @@
 
 This is a program that finds the best solution path for a maze using artificial intelligence. It takes a maze file as an input and can use 6 different AI based search algorithms to find the best solution path for that maze. The user can select the algorithm to apply for a given maze using the command line menu. After running the selected algorithm, program prints the results.
 
+
 ## Rules
 
 * Maze consists of NxN tiles.
